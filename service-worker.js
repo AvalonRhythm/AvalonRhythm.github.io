@@ -5,6 +5,7 @@ var currentCache = {
   offline: 'offline-cache' + cacheVersion
 };
 const offlineUrl = 'offline-page.html';
+const juegoUrl = 'juego.js';
 
 function createCacheBustedRequest(url){
 let request= new Request(url, {cache:'reload'});
@@ -22,6 +23,7 @@ this.addEventListener('install', event => {
   event.waitUntil(
     caches.open(currentCache.offline).then(function(cache) {
       return cache.addAll([
+          juegoUrl,
           offlineUrl
       ]);
     })
